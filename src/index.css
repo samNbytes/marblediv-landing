@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/* ============================================================
+   MARBLEDIV ENTERPRISES — INDUSTRIAL BRUTALIST DESIGN SYSTEM
+   Tokens aligned with the RayOils.ng house style:
+     Paper   stone-100  #F5F5F4   (stark off-white canvas)
+     Ink     stone-900  #1C1917   (borders, text, shadows)
+     Agri    emerald-9  #064E3B   (agricultural accent)
+     Amber   orange-6   #EA580C   (palm / industrial accent)
+   ============================================================ */
+
+@theme {
+  --font-display: "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+
+  --color-paper: #f5f5f4;
+  --color-paper-dim: #e7e5e4;
+  --color-ink: #1c1917;
+  --color-ink-soft: #44403c;
+  --color-agri: #064e3b;
+  --color-agri-bright: #047857;
+  --color-amber: #ea580c;
+  --color-amber-bright: #fb923c;
+
+  --shadow-brutal: 4px 4px 0px 0px #1c1917;
+  --shadow-brutal-sm: 2px 2px 0px 0px #1c1917;
+  --shadow-brutal-lg: 8px 8px 0px 0px #1c1917;
+  --shadow-brutal-agri: 4px 4px 0px 0px #064e3b;
+  --shadow-brutal-amber: 4px 4px 0px 0px #ea580c;
+
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-blink: blink 1.6s steps(2, start) infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-amber);
+    color: var(--color-paper);
+  }
+
+  /* Brutalist scrollbar */
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-paper-dim);
+    border-left: 2px solid var(--color-ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-ink);
+    border: 3px solid var(--color-paper-dim);
+  }
+}
+
+@layer components {
+  /* Section label — mono metadata tag with hard edge */
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* Display headline — Bebas Neue with tight industrial tracking */
+  .headline {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  /* Hard-edged engineering grid backdrop */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(28, 25, 23, 0.07) 2px, transparent 2px),
+      linear-gradient(to bottom, rgba(28, 25, 23, 0.07) 2px, transparent 2px);
+    background-size: 48px 48px;
+  }
+
+  .bg-grid-dark {
+    background-image:
+      linear-gradient(to right, rgba(245, 245, 244, 0.06) 2px, transparent 2px),
+      linear-gradient(to bottom, rgba(245, 245, 244, 0.06) 2px, transparent 2px);
+    background-size: 48px 48px;
+  }
+
+  /* Hazard stripe divider */
+  .hazard-stripe {
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--color-ink) 0px,
+      var(--color-ink) 10px,
+      var(--color-amber) 10px,
+      var(--color-amber) 20px
+    );
+  }
+}
