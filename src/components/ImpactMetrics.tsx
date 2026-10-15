@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { photos } from "../lib/site";
+import { PalmBunch, FieldRows } from "./PalmMotifs";
 
 /**
  * Counts from 0 to `target` once the element scrolls into view.
@@ -25,7 +27,6 @@ function useCountUp(target: number, suffix: string) {
       const start = performance.now();
       const tick = (now: number) => {
         const t = Math.min((now - start) / duration, 1);
-        // easeOutCubic
         const eased = 1 - Math.pow(1 - t, 3);
         setDisplay(`${Math.round(target * eased)}${suffix}`);
         if (t < 1) requestAnimationFrame(tick);
@@ -110,44 +111,77 @@ function MetricCard({
 
 export function ImpactMetrics() {
   return (
-    <section id="impact" className="border-b-2 border-ink bg-ink text-paper">
+    <section
+      id="impact"
+      className="relative border-b-2 border-ink bg-paper-warm bg-grid"
+    >
       <div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-24">
         {/* Section header */}
-        <div className="mb-12 flex flex-col gap-4 border-b-2 border-paper/30 pb-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <span className="tag mb-3 inline-block border-2 border-amber bg-amber px-3 py-1.5 text-ink">
-              Impact // 02
-            </span>
-            <h2 className="headline text-4xl md:text-6xl">
-              NDDC Socio-Economic
-              <br />
-              Impact Counter
-            </h2>
+        <div className="mb-12 border-b-2 border-ink pb-6">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <span className="tag mb-3 inline-block border-2 border-ink bg-paper px-3 py-1.5">
+                Impact // 02
+              </span>
+              <h2 className="headline text-4xl md:text-6xl">
+                NDDC Socio-Economic
+                <br />
+                Impact Counter
+              </h2>
+            </div>
+            <p className="serif max-w-md text-sm leading-relaxed text-ink-soft md:text-base">
+              Direct employment, technology deployment, outgrower empowerment
+              and short-cycle cash flow — aligned with the Commission's rural
+              youth empowerment mandate.
+            </p>
           </div>
-          <p className="max-w-md font-mono text-sm leading-relaxed text-paper/60">
-            Direct employment, technology deployment, outgrower empowerment and
-            short-cycle cash flow — aligned with the Commission's rural youth
-            empowerment mandate.
-          </p>
         </div>
 
-        {/* Metric blocks */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {metrics.map((m) => (
-            <MetricCard key={m.label} {...m} />
-          ))}
+        <div className="grid gap-8 lg:grid-cols-[1.5fr_1fr]">
+          {/* Metric blocks */}
+          <div className="grid gap-6 sm:grid-cols-2">
+            {metrics.map((m) => (
+              <MetricCard key={m.label} {...m} />
+            ))}
+          </div>
+
+          {/* Field report photo column */}
+          <div className="flex flex-col gap-6">
+            <figure className="photo-frame relative rotate-1 bg-paper p-2">
+              <img
+                src={photos.worker}
+                alt="Field operations among the palm rows on the Akamkpa corridor"
+                className="photo-duotone block w-full"
+                loading="lazy"
+              />
+              <figcaption className="photo-caption mt-2 flex justify-between px-1">
+                <span>Fig. 05 — Field report</span>
+                <span>18 direct jobs</span>
+              </figcaption>
+            </figure>
+            <div className="relative flex flex-1 flex-col justify-end border-2 border-ink bg-agri p-6 text-paper shadow-brutal">
+              <PalmBunch className="absolute -right-4 -top-10 h-44 w-32 text-paper/15" />
+              <span className="tag text-amber-bright">Community Effect</span>
+              <p className="serif mt-3 text-sm leading-relaxed text-paper/85">
+                Marblediv's mill and RayOils platform serve neighbouring
+                smallholders in Akamkpa and Akpabuyo — guaranteed off-take at
+                fair market prices for every bunch harvested.
+              </p>
+              <FieldRows className="mt-5 h-8 w-full text-paper/25" />
+            </div>
+          </div>
         </div>
 
         {/* Financial viability strip */}
-        <div className="mt-10 grid border-2 border-paper/30 bg-ink-soft sm:grid-cols-3">
+        <div className="mt-10 grid border-2 border-ink bg-ink text-paper shadow-brutal sm:grid-cols-3">
           {[
             ["₦35,167,900", "3-Year Cumulative Net Profit"],
             ["28.4%", "Internal Rate of Return (IRR)"],
             ["2.8 Years", "Payback Period"],
-          ].map(([v, l]) => (
+          ].map(([v, l], i) => (
             <div
               key={l}
-              className="border-paper/20 p-6 not-last:border-b-2 sm:not-last:border-b-0 sm:[&:not(:first-child)]:border-l-2"
+              className={`p-6 ${i > 0 ? "border-t-2 border-paper/20 sm:border-t-0 sm:border-l-2" : ""}`}
             >
               <p className="headline text-4xl text-amber-bright md:text-5xl">
                 {v}

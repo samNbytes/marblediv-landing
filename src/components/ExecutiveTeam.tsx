@@ -1,3 +1,5 @@
+import { PalmFrond } from "./PalmMotifs";
+
 const team = [
   {
     initials: "EOR",
@@ -26,30 +28,37 @@ const team = [
 ];
 
 const accentMap = {
-  agri: { block: "bg-agri text-paper", border: "border-agri" },
-  amber: { block: "bg-amber text-ink", border: "border-amber" },
+  agri: { block: "bg-agri text-paper", quote: "text-agri" },
+  amber: { block: "bg-amber text-ink", quote: "text-amber" },
 };
 
 export function ExecutiveTeam() {
   return (
-    <section id="leadership" className="border-b-2 border-ink bg-paper-dim">
-      <div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-24">
+    <section id="leadership" className="relative border-b-2 border-ink bg-paper-dim">
+      {/* ghost frond left */}
+      <PalmFrond
+        className="pointer-events-none absolute -left-20 top-1/3 hidden h-[24rem] w-auto rotate-6 text-ink/[0.04] xl:block"
+      />
+
+      <div className="relative mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-24">
         {/* Section header */}
-        <div className="mb-12 flex flex-col gap-4 border-b-2 border-ink pb-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <span className="tag mb-3 inline-block border-2 border-ink bg-paper px-3 py-1.5">
-              Leadership // 04
-            </span>
-            <h2 className="headline text-4xl md:text-6xl">
-              Executive
-              <br />
-              Leadership
-            </h2>
+        <div className="mb-12 border-b-2 border-ink pb-6">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <span className="tag mb-3 inline-block border-2 border-ink bg-paper px-3 py-1.5">
+                Leadership // 04
+              </span>
+              <h2 className="headline text-4xl md:text-6xl">
+                Executive
+                <br />
+                Leadership
+              </h2>
+            </div>
+            <p className="serif max-w-md text-sm leading-relaxed text-ink-soft md:text-base">
+              Agricultural operations paired with proprietary distribution
+              technology — one vertically integrated command structure.
+            </p>
           </div>
-          <p className="max-w-md font-mono text-sm leading-relaxed text-ink-soft">
-            Agricultural operations paired with proprietary distribution
-            technology — one vertically integrated command structure.
-          </p>
         </div>
 
         {/* Profiles */}
@@ -63,7 +72,7 @@ export function ExecutiveTeam() {
               >
                 {/* Monogram block */}
                 <div
-                  className={`flex shrink-0 items-center justify-center border-b-2 border-ink sm:w-40 sm:border-b-0 sm:border-r-2 ${accent.block} ${accent.border}`}
+                  className={`flex shrink-0 items-center justify-center border-b-2 border-ink sm:w-40 sm:border-b-0 sm:border-r-2 ${accent.block}`}
                 >
                   <span className="headline py-8 text-5xl sm:py-0">
                     {member.initials}
@@ -73,11 +82,11 @@ export function ExecutiveTeam() {
                 {/* Details */}
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="headline text-3xl">{member.name}</h3>
-                  <p className="tag mt-2 text-agri">{member.role}</p>
+                  <p className={`tag mt-2 ${accent.quote}`}>{member.role}</p>
                   <p className="mt-1 font-mono text-xs text-ink-soft">
                     {member.roleNote}
                   </p>
-                  <p className="mt-4 text-sm leading-relaxed text-ink-soft">
+                  <p className="serif mt-4 text-sm leading-relaxed text-ink-soft">
                     {member.bio}
                   </p>
                   <ul className="mt-5 space-y-2 border-t-2 border-ink pt-4">

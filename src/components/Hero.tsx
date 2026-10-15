@@ -1,6 +1,6 @@
-import { ArrowRight, Sprout } from "lucide-react";
-import { site } from "../lib/site";
-import { cn } from "../lib/utils";
+import { ArrowRight } from "lucide-react";
+import { site, photos } from "../lib/site";
+import { PalmFrond, TriangleMatrix } from "./PalmMotifs";
 
 const heroStats = [
   { value: "20 HA", label: "Tenera Estate" },
@@ -15,27 +15,31 @@ export function Hero() {
       id="top"
       className="relative overflow-hidden border-b-2 border-ink bg-paper bg-grid"
     >
-      {/* Oversized ghost wordmark */}
-      <span
-        aria-hidden
-        className="headline pointer-events-none absolute -right-6 top-6 hidden select-none text-[22rem] leading-none text-ink/[0.04] xl:block"
-      >
-        MDV
-      </span>
+      {/* oversized ghost frond, bottom-left, bleeding off-canvas */}
+      <PalmFrond
+        className="pointer-events-none absolute -bottom-24 -left-16 hidden h-[30rem] w-auto rotate-12 text-ink/[0.045] lg:block"
+      />
+      <TriangleMatrix
+        className="pointer-events-none absolute right-8 top-10 hidden h-40 w-auto text-ink/[0.07] xl:block"
+      />
 
-      <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-14 md:px-8 md:pb-24 md:pt-20">
-        <div className="grid gap-12 lg:grid-cols-[1.35fr_1fr] lg:gap-16">
-          {/* Headline column */}
+      <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-12 md:px-8 md:pb-24 md:pt-16">
+        {/* kicker row */}
+        <div className="mb-8 flex flex-wrap items-center gap-2">
+          <span className="tag border-2 border-ink bg-paper px-3 py-1.5">
+            {site.grant.applicant}
+          </span>
+          <span className="tag border-2 border-agri bg-agri px-3 py-1.5 text-paper">
+            {site.grant.amount} NDDC Facility
+          </span>
+          <span className="tag text-ink-soft hidden sm:inline">
+            No. 01 / The Estate
+          </span>
+        </div>
+
+        <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-14">
+          {/* headline column */}
           <div>
-            <div className="mb-6 flex flex-wrap items-center gap-2">
-              <span className="tag border-2 border-ink bg-paper px-3 py-1.5">
-                {site.grant.applicant}
-              </span>
-              <span className="tag border-2 border-agri bg-agri px-3 py-1.5 text-paper">
-                {site.grant.amount} NDDC Facility
-              </span>
-            </div>
-
             <h1 className="headline text-5xl sm:text-6xl md:text-7xl lg:text-[5.25rem]">
               Sustainable Palm Oil
               <br />
@@ -47,12 +51,17 @@ export function Hero() {
               <span className="text-ink-soft">in the Niger Delta.</span>
             </h1>
 
-            <p className="mt-7 max-w-xl border-l-4 border-amber pl-4 font-sans text-base leading-relaxed text-ink-soft md:text-lg">
-              Marblediv Enterprises operates a vertically integrated
-              agro-industrial estate in the Akamkpa corridor — connecting
-              sustainable Tenera cultivation directly to institutional buyers
-              through the proprietary RayOils.ng digital distribution engine.
-            </p>
+            {/* editorial intro: drop cap + serif — reads like a report, not a template */}
+            <div className="mt-8 max-w-xl border-l-4 border-amber pl-5">
+              <p className="serif text-base leading-relaxed text-ink-soft md:text-lg drop-cap">
+                Marblediv Enterprises operates a vertically integrated
+                agro-industrial estate in the Akamkpa corridor — connecting
+                sustainable Tenera cultivation directly to institutional buyers
+                through the proprietary RayOils.ng digital distribution engine.
+                Twenty hectares of soil, a semi-automated mill, and a
+                WhatsApp-routed supply chain under one roof.
+              </p>
+            </div>
 
             {/* CTAs */}
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
@@ -78,47 +87,62 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Spec panel */}
-          <aside className="border-2 border-ink bg-paper shadow-brutal-lg">
-            <div className="flex items-center justify-between border-b-2 border-ink bg-ink px-4 py-2.5">
-              <span className="tag text-paper">Estate Spec Sheet</span>
-              <Sprout size={16} className="text-agri-bright" />
-            </div>
-            <dl className="divide-y-2 divide-ink">
-              {[
-                ["Location", site.location.corridor],
-                ["Coordinates", site.location.coordinates],
-                ["Plant Variety", "NIFOR Tenera Hybrid (Dura × Pisifera)"],
-                ["Spacing", "Triangular 9m × 9m × 9m"],
-                ["Density", "143 stands / ha"],
-                ["Intercrop", "TME 419 Cassava (Years 1–3)"],
-                ["Extraction", "CPO @ 21% mesocarp ratio"],
-              ].map(([k, v]) => (
-                <div
-                  key={k}
-                  className="flex items-baseline justify-between gap-4 px-4 py-3"
-                >
-                  <dt className="tag shrink-0 text-ink-soft">{k}</dt>
-                  <dd className="text-right font-mono text-sm font-bold">
-                    {v}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </aside>
+          {/* photo column — pinned print + spec sheet */}
+          <div className="flex flex-col gap-5">
+            <figure className="photo-frame relative -rotate-1 bg-paper p-2">
+              <img
+                src={photos.plantation}
+                alt="Aerial view of the Marblediv Tenera estate — triangular palm rows on the Akamkpa corridor"
+                className="photo-duotone block w-full"
+                loading="eager"
+              />
+              <figcaption className="photo-caption mt-2 flex justify-between px-1">
+                <span>Fig. 01 — Estate aerial</span>
+                <span>Akamkpa corridor</span>
+              </figcaption>
+            </figure>
+
+            {/* spec sheet */}
+            <aside className="border-2 border-ink bg-paper shadow-brutal">
+              <div className="flex items-center justify-between border-b-2 border-ink bg-ink px-4 py-2.5">
+                <span className="tag text-paper">Estate Spec Sheet</span>
+                <TriangleMatrix className="h-5 w-6 text-paper/50" />
+              </div>
+              <dl className="divide-y-2 divide-ink">
+                {[
+                  ["Location", site.location.corridor],
+                  ["Coordinates", site.location.coordinates],
+                  ["Plant Variety", "NIFOR Tenera Hybrid (Dura × Pisifera)"],
+                  ["Spacing", "Triangular 9m × 9m × 9m"],
+                  ["Density", "143 stands / ha"],
+                  ["Intercrop", "TME 419 Cassava (Years 1–3)"],
+                  ["Extraction", "CPO @ 21% mesocarp ratio"],
+                ].map(([k, v]) => (
+                  <div
+                    key={k}
+                    className="flex items-baseline justify-between gap-4 px-4 py-2.5"
+                  >
+                    <dt className="tag shrink-0 text-ink-soft">{k}</dt>
+                    <dd className="text-right font-mono text-xs font-bold md:text-sm">
+                      {v}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </aside>
+          </div>
         </div>
 
-        {/* Stat strip */}
-        <div className="mt-14 grid grid-cols-2 border-2 border-ink bg-paper shadow-brutal md:mt-20 lg:grid-cols-4">
+        {/* stat strip */}
+        <div className="mt-12 grid grid-cols-2 border-2 border-ink bg-paper shadow-brutal md:mt-16 lg:grid-cols-4">
           {heroStats.map((stat, i) => (
             <div
               key={stat.label}
-              className={cn(
-                "p-5 md:p-6",
-                i > 0 && "border-t-2 border-ink lg:border-t-0",
-                i > 0 && i % 2 === 0 && "lg:border-l-2 lg:border-ink",
-                i > 0 && i % 2 === 1 && "border-l-2 border-ink lg:border-l-2",
-              )}
+              className={`p-5 md:p-6 ${
+                i > 0 ? "border-t-2 border-ink lg:border-t-0" : ""
+              } ${i > 0 && i % 2 === 1 ? "border-l-2 border-ink lg:border-l-2" : ""} ${
+                i > 0 && i % 2 === 0 ? "lg:border-l-2 lg:border-ink" : ""
+              }`}
             >
               <p className="headline text-4xl text-agri md:text-5xl">
                 {stat.value}

@@ -45,3 +45,11 @@ export const navLinks = [
   { label: "Leadership", href: "#leadership" },
   { label: "Contact", href: "#contact" },
 ] as const;
+
+export const photos = {
+  plantation: "/img/plantation-aerial.png",
+  fruit: "/img/fruit-bunches.png",
+  mill: "/img/mill.png",
+  cassava: "/img/cassava.png",
+  worker: "/img/worker.png",
+} as const;

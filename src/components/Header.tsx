@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { Menu, X, Radio } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { site, navLinks } from "../lib/site";
-import { cn } from "../lib/utils";
+import { PalmFrond } from "./PalmMotifs";
 
 export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-paper border-b-2 border-ink">
-      {/* Utility ticker bar */}
+      {/* utility ticker — feels like a wire-service crawl, not a template */}
       <div className="bg-ink text-paper overflow-hidden">
         <div className="flex w-max animate-marquee whitespace-nowrap py-1">
           {[0, 1].map((i) => (
@@ -34,18 +34,19 @@ export function Header() {
         </div>
       </div>
 
-      {/* Main nav */}
+      {/* main nav */}
       <div className="flex items-stretch justify-between">
-        {/* Logo block */}
+        {/* logo — monogram + nameplate */}
         <a
           href="#top"
           className="flex items-center gap-3 border-r-2 border-ink px-4 py-3 md:px-6"
         >
           <span
             aria-hidden
-            className="grid h-10 w-10 place-items-center bg-ink font-display text-2xl leading-none text-paper"
+            className="relative grid h-10 w-10 place-items-center bg-ink"
           >
-            M
+            <span className="font-display text-2xl leading-none text-paper">M</span>
+            <PalmFrond className="absolute -right-1 -top-2 h-6 w-5 text-agri-bright" />
           </span>
           <span className="flex flex-col">
             <span className="headline text-xl leading-none md:text-2xl">
@@ -57,7 +58,7 @@ export function Header() {
           </span>
         </a>
 
-        {/* Desktop nav */}
+        {/* desktop nav */}
         <nav className="hidden items-stretch lg:flex">
           {navLinks.map((link) => (
             <a
@@ -78,7 +79,7 @@ export function Header() {
           </a>
         </nav>
 
-        {/* Status + mobile toggle */}
+        {/* status + mobile toggle */}
         <div className="flex items-stretch">
           <div className="hidden items-center gap-2 border-l-2 border-ink px-5 sm:flex">
             <span className="relative flex h-3 w-3">
@@ -102,12 +103,11 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile nav */}
+      {/* mobile nav */}
       <div
-        className={cn(
-          "grid overflow-hidden border-t-2 border-ink transition-all duration-300 lg:hidden",
-          open ? "grid-rows-[1fr]" : "grid-rows-[0fr] border-t-0",
-        )}
+        className={`grid overflow-hidden border-ink transition-all duration-300 lg:hidden ${
+          open ? "grid-rows-[1fr] border-t-2" : "grid-rows-[0fr]"
+        }`}
       >
         <nav className="min-h-0">
           {navLinks.map((link) => (
@@ -127,7 +127,7 @@ export function Header() {
             onClick={() => setOpen(false)}
             className="tag flex items-center gap-2 bg-agri px-5 py-4 text-paper"
           >
-            <Radio size={14} /> {site.partner.name} ↗
+            {site.partner.name} ↗
           </a>
           <div className="tag flex items-center justify-between gap-2 bg-amber px-5 py-3 text-ink">
             <span>● {site.grant.applicant}</span>

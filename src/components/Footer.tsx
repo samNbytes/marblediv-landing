@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import { site } from "../lib/site";
-import { cn } from "../lib/utils";
+import { PalmBunch, PalmFrond } from "./PalmMotifs";
 
 const interests = [
   "Outgrower Program",
@@ -27,14 +27,19 @@ export function Footer() {
   };
 
   return (
-    <footer id="contact" className="bg-ink text-paper">
+    <footer id="contact" className="relative bg-paper-warm text-ink">
+      {/* ghost frond bleeding off the top-right */}
+      <PalmFrond
+        className="pointer-events-none absolute -right-12 -top-20 hidden h-[26rem] w-auto -rotate-12 text-ink/[0.04] xl:block"
+      />
+
       {/* Contact form block */}
-      <div className="border-b-2 border-paper/25">
+      <div className="relative border-b-2 border-ink">
         <div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-24">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
             {/* Contact info */}
             <div>
-              <span className="tag mb-3 inline-block border-2 border-amber bg-amber px-3 py-1.5 text-ink">
+              <span className="tag mb-3 inline-block border-2 border-ink bg-paper px-3 py-1.5">
                 Contact // 05
               </span>
               <h2 className="headline text-4xl md:text-6xl">
@@ -42,49 +47,65 @@ export function Footer() {
                 <br />
                 The Estate
               </h2>
-              <p className="mt-5 max-w-md font-mono text-sm leading-relaxed text-paper/60">
-                Institutional buyers, outgrower smallholders and NDDC
-                evaluators — transmit your inquiry below. The RayOils.ng
-                dispatch desk responds within one business day.
+              <p className="serif mt-5 max-w-md text-sm leading-relaxed text-ink-soft md:text-base">
+                Institutional buyers, outgrower smallholders and NDDC evaluators
+                — transmit your inquiry below. The RayOils.ng dispatch desk
+                responds within one business day.
               </p>
 
               <dl className="mt-9 space-y-4">
-                <div className="flex items-start gap-4 border-2 border-paper/25 bg-ink-soft p-4">
-                  <MapPin size={18} className="mt-0.5 shrink-0 text-amber-bright" />
+                <div className="flex items-start gap-4 border-2 border-ink bg-paper p-4">
+                  <MapPin size={18} className="mt-0.5 shrink-0 text-amber" />
                   <div>
-                    <dt className="tag text-paper/50">Estate Site</dt>
+                    <dt className="tag text-ink-soft">Estate Site</dt>
                     <dd className="mt-1 font-mono text-sm">
                       {site.location.corridor}
                       <br />
                       {site.location.state}, {site.location.country}
+                      <br />
+                      <span className="text-ink-soft">{site.location.coordinates}</span>
                     </dd>
                   </div>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <a
                     href={`mailto:${site.contact.email}`}
-                    className="flex items-center gap-3 border-2 border-paper/25 bg-ink-soft p-4 transition-colors hover:bg-amber hover:text-ink"
+                    className="flex items-center gap-3 border-2 border-ink bg-paper p-4 transition-colors hover:bg-ink hover:text-paper"
                   >
-                    <Mail size={16} className="shrink-0 text-amber-bright" />
+                    <Mail size={16} className="shrink-0 text-amber" />
                     <span className="font-mono text-xs break-all">
                       {site.contact.email}
                     </span>
                   </a>
                   <a
                     href={site.contact.phoneHref}
-                    className="flex items-center gap-3 border-2 border-paper/25 bg-ink-soft p-4 transition-colors hover:bg-amber hover:text-ink"
+                    className="flex items-center gap-3 border-2 border-ink bg-paper p-4 transition-colors hover:bg-ink hover:text-paper"
                   >
-                    <Phone size={16} className="shrink-0 text-amber-bright" />
+                    <Phone size={16} className="shrink-0 text-amber" />
                     <span className="font-mono text-xs">
                       {site.contact.phone}
                     </span>
                   </a>
                 </div>
               </dl>
+
+              {/* mill photo, small, tucked beside contact details */}
+              <figure className="photo-frame relative mt-6 hidden rotate-1 bg-paper p-2 lg:block">
+                <img
+                  src="/img/mill.png"
+                  alt="The semi-automated milling plant — 1.5 tons per hour hydraulic extraction"
+                  className="photo-duotone block w-full"
+                  loading="lazy"
+                />
+                <figcaption className="photo-caption mt-2 px-1">
+                  Fig. 07 — The mill, 1.5 t/hr
+                </figcaption>
+              </figure>
             </div>
 
             {/* Form */}
-            <div className="border-2 border-paper/25 bg-ink-soft shadow-brutal">
+            <div className="relative border-2 border-ink bg-ink text-paper shadow-brutal-lg">
+              <PalmBunch className="pointer-events-none absolute -bottom-6 -left-6 h-40 w-28 text-paper/10" />
               <div className="flex items-center justify-between border-b-2 border-paper/25 px-5 py-3">
                 <span className="tag text-paper/70">Inquiry Terminal</span>
                 <span className="tag text-agri-bright">● Channel Open</span>
@@ -180,26 +201,24 @@ export function Footer() {
       </div>
 
       {/* Corporate bar */}
-      <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
-        <div className="flex flex-col gap-6 border-t-2 border-paper/25 pt-8 md:flex-row md:items-center md:justify-between">
+      <div className="relative mx-auto max-w-7xl px-4 py-8 md:px-8">
+        <div className="flex flex-col gap-6 border-t-2 border-ink pt-8 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-3">
             <span
               aria-hidden
-              className="grid h-9 w-9 place-items-center bg-paper font-display text-xl text-ink"
+              className="grid h-9 w-9 place-items-center bg-ink font-display text-xl text-paper"
             >
               M
             </span>
             <div>
               <p className="headline text-xl">{site.company}</p>
-              <p className="tag text-paper/50">{site.tagline}</p>
+              <p className="tag text-ink-soft">{site.tagline}</p>
             </div>
           </div>
 
-          <div className="grid gap-1 font-mono text-xs text-paper/50 sm:grid-cols-2 sm:gap-x-10">
+          <div className="grid gap-1 font-mono text-xs text-ink-soft sm:grid-cols-2 sm:gap-x-10">
             <p>Corporate Registration: {site.rcNumber}</p>
-            <p>
-              Site Coordinates: {site.location.coordinates}
-            </p>
+            <p>Site Coordinates: {site.location.coordinates}</p>
             <p>{site.location.corridor}</p>
             <p>
               {site.location.state}, {site.location.country}
@@ -207,21 +226,21 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-3 border-t-2 border-paper/15 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-xs text-paper/40">
+        <div className="mt-8 flex flex-col gap-3 border-t-2 border-ink/20 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-mono text-xs text-ink-soft/80">
             © {new Date().getFullYear()} {site.company}. All rights reserved.
             In technical partnership with{" "}
             <a
               href={site.partner.url}
               target="_blank"
               rel="noreferrer"
-              className="text-amber-bright underline underline-offset-4 hover:text-amber"
+              className="text-clay underline underline-offset-4 hover:text-amber"
             >
               {site.partner.name}
             </a>
             .
           </p>
-          <p className={cn("tag text-paper/40")}>
+          <p className="tag text-ink-soft/80">
             {site.grant.applicant} · {site.grant.program}
           </p>
         </div>
