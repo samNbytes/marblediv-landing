@@ -1,6 +1,6 @@
 # Marblediv Enterprises — Corporate Landing Page
 
-Editorial-brutalist corporate landing page for **Marblediv Enterprises** (marblediv.com), the parent agro-industrial entity behind the ₦50M NDDC Agricultural Enterprise Development Facility application, in technical partnership with RayOils.ng.
+Editorial-brutalist corporate landing page for **Marblediv Enterprises** (marblediv.com) — a vertically integrated agro-industrial estate raising a **₦50,000,000 capital round** to scale from 5 operating hectares to a **25-hectare total estate** (5 Ha existing + 20 Ha funded), in technical partnership with RayOils.ng. The framing is investor-neutral — NDDC, DFIs and private investors are all addressed identically.
 
 ## Stack
 
@@ -32,10 +32,10 @@ marblediv-landing/
 ├── src/
 │   ├── components/
 │   │   ├── PalmMotifs.tsx      # Hand-drawn SVG: frond, bunch, matrix, rows, sprout
-│   │   ├── Header.tsx          # Ticker, nav, NDDC tag, ESTATE ONLINE status
+│   │   ├── Header.tsx          # Ticker, nav, capital-round tag, ESTATE ONLINE status
 │   │   ├── Hero.tsx            # Editorial headline, drop cap, aerial photo, spec sheet
 │   │   ├── OperationsGrid.tsx  # Cards A/B/C, each with its own photo + specs
-│   │   ├── ImpactMetrics.tsx   # NDDC counters (animated) + field-report photos
+│   │   ├── ImpactMetrics.tsx   # Socio-economic counters (animated) + field photos
 │   │   ├── Sustainability.tsx  # Agronomic practices + planting schedule
 │   │   ├── ExecutiveTeam.tsx   # Epal Ofem Raymond (MD) & Divine Raymond (TD)
 │   │   └── Footer.tsx          # Contact form, coordinates, corporate bar
@@ -70,7 +70,7 @@ Aligned with the RayOils house style, evolved with organic counterpoints:
 1. **RC number** — `site.rcNumber` in `src/lib/site.ts` is a `[ RC NUMBER ]` placeholder; replace with the real CAC registration number.
 2. **Contact form** — submit handler in `Footer.tsx` is a local-state placeholder (no backend). Wire it to an email service or Supabase Edge Function before launch.
 3. **Fonts** — Google Fonts linked in `index.html`; self-host for production if desired.
-4. **Image credits** — photography is AI-generated for placeholder purposes. Replace with real estate photography when available for maximum credibility with NDDC evaluators.
+4. **Image credits** — photography is AI-generated for placeholder purposes. Replace with real estate photography when available for maximum credibility with investors.
 
 ## Deployment
 

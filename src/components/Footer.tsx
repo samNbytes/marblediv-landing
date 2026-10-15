@@ -7,7 +7,7 @@ const interests = [
   "Outgrower Program",
   "B2B Supply Platform",
   "Institutional Procurement",
-  "NDDC / Partnership Inquiry",
+  "Investment / Partnership Inquiry",
 ];
 
 export function Footer() {
@@ -48,9 +48,9 @@ export function Footer() {
                 The Estate
               </h2>
               <p className="serif mt-5 max-w-md text-sm leading-relaxed text-ink-soft md:text-base">
-                Institutional buyers, outgrower smallholders and NDDC evaluators
-                — transmit your inquiry below. The RayOils.ng dispatch desk
-                responds within one business day.
+                Institutional buyers, outgrower smallholders and prospective
+                investors — transmit your inquiry below. The RayOils.ng
+                dispatch desk responds within one business day.
               </p>
 
               <dl className="mt-9 space-y-4">
@@ -241,7 +241,7 @@ export function Footer() {
             .
           </p>
           <p className="tag text-ink-soft/80">
-            {site.grant.applicant} · {site.grant.program}
+            {site.capital.status} · {site.capital.amount} {site.capital.round}
           </p>
         </div>
       </div>

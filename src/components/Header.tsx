@@ -15,7 +15,7 @@ export function Header() {
             <div key={i} className="flex shrink-0 items-center">
               {[
                 `${site.company.toUpperCase()} — ${site.tagline.toUpperCase()}`,
-                `NDDC FACILITY APPLICANT — ${site.grant.amount}`,
+                `${site.capital.amount} ${site.capital.round.toUpperCase()} — ${site.estate.totalHa} HA TOTAL ESTATE`,
                 `${site.location.corridor.toUpperCase()} — ${site.location.coordinates}`,
                 "TENERA HYBRID · TME 419 INTERCROP · SEMI-AUTOMATED MILLING",
               ].map((item) => (
@@ -89,7 +89,7 @@ export function Header() {
             <span className="tag text-agri">Estate Online</span>
           </div>
           <span className="hidden items-center border-l-2 border-ink bg-amber px-5 tag text-ink md:flex">
-            {site.grant.applicant}
+            {site.capital.status}
           </span>
           <button
             type="button"
@@ -130,7 +130,7 @@ export function Header() {
             {site.partner.name} ↗
           </a>
           <div className="tag flex items-center justify-between gap-2 bg-amber px-5 py-3 text-ink">
-            <span>● {site.grant.applicant}</span>
+            <span>● {site.capital.status}</span>
             <span className="text-ink/70">{site.location.coordinates}</span>
           </div>
         </nav>

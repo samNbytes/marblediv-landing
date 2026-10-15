@@ -124,15 +124,15 @@ export function ImpactMetrics() {
                 Impact // 02
               </span>
               <h2 className="headline text-4xl md:text-6xl">
-                NDDC Socio-Economic
+                Socio-Economic
                 <br />
-                Impact Counter
+                Impact
               </h2>
             </div>
             <p className="serif max-w-md text-sm leading-relaxed text-ink-soft md:text-base">
               Direct employment, technology deployment, outgrower empowerment
-              and short-cycle cash flow — aligned with the Commission's rural
-              youth empowerment mandate.
+              and short-cycle cash flow — measurable outcomes for investors and
+              the host communities of the Akamkpa corridor.
             </p>
           </div>
         </div>

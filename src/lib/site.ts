@@ -4,6 +4,10 @@
  *
  * NOTE: `rcNumber` is a fill-in placeholder — replace with the real
  * CAC/RC registration number before publishing marblediv.com.
+ *
+ * Framing: investor-neutral. The ₦50M is a capital round open to any
+ * investor (NDDC, DFIs, private); it funds a NEW 20-hectare block on
+ * top of the 5 hectares already under cultivation — 25 Ha total.
  */
 
 export const site = {
@@ -15,10 +19,21 @@ export const site = {
     role: "Proprietary Digital Distribution & Technology Arm",
     url: "https://rayoils.ng",
   },
-  grant: {
-    program: "NDDC Agricultural Enterprise Development Facility",
+  capital: {
     amount: "₦50,000,000",
-    applicant: "Grant Applicant",
+    round: "Capital Round",
+    status: "Now Raising",
+  },
+  estate: {
+    /** Hectares already under cultivation today */
+    existingHa: 5,
+    existingStands: 715,
+    /** Hectares the ₦50M capital round funds (new block) */
+    fundedHa: 20,
+    fundedStands: 2860,
+    /** 5 existing + 20 funded */
+    totalHa: 25,
+    totalStands: 3575,
   },
   location: {
     corridor: "Akamkpa / Odukpani Agricultural Corridor",

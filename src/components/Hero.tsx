@@ -3,8 +3,8 @@ import { site, photos } from "../lib/site";
 import { PalmFrond, TriangleMatrix } from "./PalmMotifs";
 
 const heroStats = [
-  { value: "20 HA", label: "Tenera Estate" },
-  { value: "2,860", label: "Palm Stands" },
+  { value: "25 HA", label: "Total Estate" },
+  { value: "2,860", label: "New Palm Stands" },
   { value: "1.5 T/HR", label: "Mill Capacity" },
   { value: "40+", label: "Outgrowers" },
 ];
@@ -27,10 +27,10 @@ export function Hero() {
         {/* kicker row */}
         <div className="mb-8 flex flex-wrap items-center gap-2">
           <span className="tag border-2 border-ink bg-paper px-3 py-1.5">
-            {site.grant.applicant}
+            {site.capital.status}
           </span>
           <span className="tag border-2 border-agri bg-agri px-3 py-1.5 text-paper">
-            {site.grant.amount} NDDC Facility
+            {site.capital.amount} {site.capital.round}
           </span>
           <span className="tag text-ink-soft hidden sm:inline">
             No. 01 / The Estate
@@ -113,8 +113,10 @@ export function Hero() {
                   ["Location", site.location.corridor],
                   ["Coordinates", site.location.coordinates],
                   ["Plant Variety", "NIFOR Tenera Hybrid (Dura × Pisifera)"],
+                  ["Funded Block", `${site.estate.fundedHa} Ha — 2,860 stands`],
+                  ["Existing Block", `${site.estate.existingHa} Ha — ~715 stands`],
+                  ["Total Estate", `${site.estate.totalHa} Ha`],
                   ["Spacing", "Triangular 9m × 9m × 9m"],
-                  ["Density", "143 stands / ha"],
                   ["Intercrop", "TME 419 Cassava (Years 1–3)"],
                   ["Extraction", "CPO @ 21% mesocarp ratio"],
                 ].map(([k, v]) => (

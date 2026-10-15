@@ -11,12 +11,14 @@ const operations = [
     photo: photos.plantation,
     photoCaption: "Fig. 02 — Estate rows, triangular matrix",
     summary:
-      "A primary cultivation block of high-yield NIFOR Tenera hybrid palms established on 20 hectares of the Akamkpa / Odukpani corridor.",
+      "A capital-funded cultivation block of high-yield NIFOR Tenera hybrid palms on 20 hectares of the Akamkpa / Odukpani corridor — added to 5 hectares already under cultivation for a 25-hectare total estate.",
     specs: [
       ["Total Stands", "2,860 palms"],
       ["Layout", "Equilateral triangular matrix"],
       ["Spacing", "9m × 9m × 9m"],
       ["Density", "143 stands / hectare"],
+      ["Existing Block", "5 Ha (~715 stands)"],
+      ["Total Estate", "25 Ha"],
       ["Buffer", "+5% nursery (3,003 seedlings)"],
       ["Orientation", "North–South alignment"],
     ],
